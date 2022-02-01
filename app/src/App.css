@@ -1,0 +1,23 @@
+.width {
+  /* width: 120px; */
+}
+.change__24 {
+  display: flex;
+  align-items: center;
+}
+.active {
+  color: green;
+}
+.dis__active {
+  color: red;
+}
+.coin__icon {
+  width: 30px;
+}
+.coin__name {
+  display: flex !important;
+  align-items: center;
+}
+.coin_symbol {
+  color: rgb(150, 150, 150);
+}
