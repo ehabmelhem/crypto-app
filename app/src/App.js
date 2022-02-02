@@ -19,9 +19,9 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import TableRowsIcon from "@mui/icons-material/TableRows";
 import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
+import ChartCompare from "./ChartCompare";
 const getAllCrypto = async () => {
   return await axios
     .get("https://api.coinstats.app/public/v1/coins?skip=0&currency=EUR")
@@ -177,7 +177,15 @@ function App() {
                   />
                 }
               />
-              <Route path="/chart" element={<h1>"ehab</h1>} />
+              <Route
+                path="/chart"
+                element={
+                  <ChartCompare
+                    compareCoins={compareCoins}
+                    setCompareCoins={setCompareCoins}
+                  />
+                }
+              />
             </Routes>
           </Main>
         </Box>

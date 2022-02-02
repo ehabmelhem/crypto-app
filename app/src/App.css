@@ -25,3 +25,6 @@
   color: gray;
   text-decoration: none;
 }
+.chart__compare {
+  border: 1px solid black;
+}

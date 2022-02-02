@@ -55,10 +55,29 @@ export const options = {
   },
 };
 
-function Graph({ isUp, coinID }) {
+function Graph({ isUp, coinID, setCharDataSet, chartDataSet }) {
   const [chart, setChart] = useState([]);
   useEffect(() => {
     getCoinChart(coinID).then((data) => {
+      var object = {
+        type: "line",
+        label: `${coinID}`,
+        data: data.data.chart.map((item, index) =>
+          item.map((number) => {
+            return number;
+          })
+        ),
+
+        borderColor: "rgb(255, 0, 0)",
+        radius: false,
+        borderWidth: 2,
+        pointBorderColor: "rgb(0,0,0,0)",
+        pointBackgroundColor: "rgb(0,0,0,0)",
+        pointHoverBackgroundColor: "#5AC53B",
+        pointHoverBorderWidth: 4,
+        pointHoverRadius: 6,
+      };
+      setCharDataSet((chartDataSet) => [...chartDataSet, object]);
       setChart(data.data.chart);
     });
   }, []);

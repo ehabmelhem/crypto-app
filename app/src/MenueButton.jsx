@@ -9,6 +9,8 @@ export default function MenueButton({
   currentCoin,
   compareCoins,
   coins,
+  chartDataSet,
+  setCharDataSet,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -19,7 +21,10 @@ export default function MenueButton({
     setAnchorEl(null);
   };
   const handleAddtoCompare = () => {
-    setCompareCoins([...compareCoins, currentCoin]);
+    const thebasicOne = chartDataSet.find(
+      (item) => item.label === currentCoin.id
+    );
+    setCompareCoins([...compareCoins, thebasicOne]);
     handleClose();
   };
   const handleDeleteRow = () => {

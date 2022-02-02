@@ -75,6 +75,7 @@ function createData(name, code, population, size) {
 function CoinsTable({ setCompareCoins, compareCoins, callBackFunc, coins }) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [chartDataSet, setCharDataSet] = useState([]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -175,6 +176,8 @@ function CoinsTable({ setCompareCoins, compareCoins, callBackFunc, coins }) {
                                 callBackFunc={callBackFunc}
                                 compareCoins={compareCoins}
                                 coins={coins}
+                                chartDataSet={chartDataSet}
+                                setCharDataSet={setCharDataSet}
                               />
                             </TableCell>
                           );
@@ -185,6 +188,8 @@ function CoinsTable({ setCompareCoins, compareCoins, callBackFunc, coins }) {
                               <Graph
                                 isUp={row["priceChange1d"] > 0 ? true : false}
                                 coinID={row["id"]}
+                                setCharDataSet={setCharDataSet}
+                                chartDataSet={chartDataSet}
                               />
                             </TableCell>
                           );
