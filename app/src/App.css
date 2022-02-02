@@ -21,3 +21,7 @@
 .coin_symbol {
   color: rgb(150, 150, 150);
 }
+.link {
+  color: gray;
+  text-decoration: none;
+}

@@ -38,10 +38,19 @@ ChartJS.register(
 );
 
 export const options = {
-  responsive: true,
   plugins: {
     legend: {
-      position: "top",
+      display: false,
+    },
+  },
+  scales: {
+    "x-axis-1": {
+      display: false,
+    },
+    "y-axis-1": {
+      type: "linear",
+      display: false,
+      position: "left",
     },
   },
 };
@@ -60,6 +69,7 @@ function Graph({ isUp, coinID }) {
     labels,
     datasets: [
       {
+        type: "line",
         label: `${coinID}`,
         data: chart.map((item, index) =>
           item.map((number) => {
@@ -69,6 +79,11 @@ function Graph({ isUp, coinID }) {
         borderColor: isUp ? "rgb(46, 125, 50)" : "rgb(255, 0, 0)",
         radius: false,
         borderWidth: 2,
+        pointBorderColor: "rgb(0,0,0,0)",
+        pointBackgroundColor: "rgb(0,0,0,0)",
+        pointHoverBackgroundColor: "#5AC53B",
+        pointHoverBorderWidth: 4,
+        pointHoverRadius: 6,
       },
     ],
   };

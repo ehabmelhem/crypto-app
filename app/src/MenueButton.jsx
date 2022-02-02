@@ -3,7 +3,13 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-export default function MenueButton() {
+export default function MenueButton({
+  callBackFunc,
+  setCompareCoins,
+  currentCoin,
+  compareCoins,
+  coins,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -11,6 +17,19 @@ export default function MenueButton() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleAddtoCompare = () => {
+    setCompareCoins([...compareCoins, currentCoin]);
+    handleClose();
+  };
+  const handleDeleteRow = () => {
+    const new_coins = coins.filter((item) => {
+      if (item.id !== currentCoin.id) {
+        return item;
+      }
+    });
+    callBackFunc([...new_coins]);
+    handleClose();
   };
 
   return (
@@ -39,8 +58,8 @@ export default function MenueButton() {
           horizontal: "left",
         }}
       >
-        <MenuItem onClick={handleClose}>Add to compare</MenuItem>
-        <MenuItem onClick={handleClose}>Delete Row</MenuItem>
+        <MenuItem onClick={handleAddtoCompare}>Add to compare</MenuItem>
+        <MenuItem onClick={handleDeleteRow}>Delete Row</MenuItem>
       </Menu>
     </div>
   );
